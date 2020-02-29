@@ -1,0 +1,436 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled1.ipynb",
+      "provenance": [],
+      "authorship_tag": "ABX9TyOx0XN39Zb21y/3VPVZAuK5",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/junuimoon/Doit-PYTHON/blob/master/Chapter%2005.%20Class\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "b1xOq5Kqa1IC",
+        "colab_type": "text"
+      },
+      "source": [
+        "클래스는 없다 하더라도 사용하는 데에 지장이 있지는 않다.\n",
+        "하지만 계산기처럼, 항상 메모리 어딘가에는 내가 했던 일을 기억하고는 있어야 하는것.\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "hOieeiT5bDg8",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 53
+        },
+        "outputId": "b8f8ca0c-7822-4a5c-b4b5-b26e235593c9"
+      },
+      "source": [
+        "result = 0\n",
+        "\n",
+        "def add(num):\n",
+        "    global result\n",
+        "    result += num\n",
+        "    return result\n",
+        "\n",
+        "print(add(3))\n",
+        "print(add(4))"
+      ],
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "3\n",
+            "7\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "0FIfN15vbOZh",
+        "colab_type": "text"
+      },
+      "source": [
+        "만약, 계산기가 두대가 필요한 상황이라면??(메모리에 저장해야 한다면)  --> 즉, 같은 일을 하지만, 결과는 독립적으로 나타나야 하는 , 독립사건이 필요할 때 클래스를 이용한다."
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "nDWPEek6biDr",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 89
+        },
+        "outputId": "8b427144-fa53-44a2-f720-a863ac31a73b"
+      },
+      "source": [
+        "class Calculator:\n",
+        "    def __init__(self):\n",
+        "        self.result = 0\n",
+        "\n",
+        "    def add(self, num):\n",
+        "        self.result += num\n",
+        "        return self.result\n",
+        "\n",
+        "cal1 = Calculator()\n",
+        "cal2 = Calculator()\n",
+        "\n",
+        "print(cal1.add(3))\n",
+        "print(cal1.add(4))\n",
+        "print(cal2.add(3))\n",
+        "print(cal2.add(7))"
+      ],
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "3\n",
+            "7\n",
+            "3\n",
+            "10\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "yqXXUi2cb4hg",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "L3NzQtUccLNn",
+        "colab_type": "text"
+      },
+      "source": [
+        "클래스로 만든 객체는 인스턴스라고 하는데, \n",
+        "a = Cookie()\n",
+        "\n",
+        "이런식으로 만들어졌을때, a는 객체이고, a객체는 cookie의 인스턴스가 된다.\n",
+        "따라서, 인스턴스라는 말은 특정 객체가 어떤 클래스의 객체인지를 관계를 통해 나타내고 싶을 때 사용한다. "
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "GJs4usm4cZDN",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "#사칙연산 클래스 만들기."
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "vO70kFsucbW5",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "class FourCal:\n",
+        "    def __init__(self, first, second):\n",
+        "        self.first = first\n",
+        "        self.second = second\n",
+        "    def add(self):\n",
+        "        result = self.first + self.second\n",
+        "        return result\n",
+        "    def div(self):\n",
+        "        result = self.first - self.second\n",
+        "        return result\n",
+        "    def mul(self):\n",
+        "        result = self.first * self.second\n",
+        "        return result\n",
+        "    def div(self):\n",
+        "        result = self.first / self.second\n",
+        "        return result\n",
+        "\n",
+        "\n",
+        "a = FourCal()\n",
+        "a.setdata(4, 2)  # 클래스 안의 함수를 메서드라고 하는데, 메서드를 호출하려면 이렇게 도트를 사용해야 한다."
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "LgXSDK20cqxL",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "outputId": "3246ffbe-4bec-4683-aef7-d559f86273aa"
+      },
+      "source": [
+        "print(a.first)"
+      ],
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "4\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "_0QN12Lpd9x9",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "outputId": "81dfc0c6-b7a3-4d70-9088-caec85cbe416"
+      },
+      "source": [
+        "print(a.second)"
+      ],
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "2\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "VSos5fsUd-s6",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "a = FourCal()\n",
+        "b = FourCal()"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "hqMNx6YCeCQA",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "outputId": "b86ac744-171e-4587-b555-22d51d55995d"
+      },
+      "source": [
+        "a.setdata(4, 2)\n",
+        "print(a.first)"
+      ],
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "4\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "_a8uQPX0eE1n",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "outputId": "ecd1515d-0f1d-44b2-efe4-1a6700fb8fbe"
+      },
+      "source": [
+        "b.setdata(3, 7)\n",
+        "print(b.first)"
+      ],
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "3\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "JmTNz0p_eHai",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 35
+        },
+        "outputId": "f748ead5-7414-4548-ae99-e542a3f7130e"
+      },
+      "source": [
+        "print(a.add())"
+      ],
+      "execution_count": 13,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "6\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "5VZDGI2WefvP",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 334
+        },
+        "outputId": "a47149aa-35c3-4e85-f617-15d6633366a8"
+      },
+      "source": [
+        "#생성자(Constructor)\n",
+        "\n",
+        "a = FourCal()\n",
+        "a.add()\n"
+      ],
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "AttributeError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-15-95ce7e897fcc>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0ma\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mFourCal\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 3\u001b[0;31m \u001b[0ma\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0madd\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;32m<ipython-input-14-c56d107daf55>\u001b[0m in \u001b[0;36madd\u001b[0;34m(self)\u001b[0m\n\u001b[1;32m      4\u001b[0m         \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msecond\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0msecond\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0madd\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 6\u001b[0;31m         \u001b[0mresult\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mfirst\u001b[0m \u001b[0;34m+\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msecond\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      7\u001b[0m         \u001b[0;32mreturn\u001b[0m \u001b[0mresult\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      8\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0mdiv\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mAttributeError\u001b[0m: 'FourCal' object has no attribute 'first'"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "M19zYMfPfAjF",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# setdata가 무조건 선행되어야만 위 코드가 실행된다. 위 오류 안나게 하고싶을땐, 초깃값을 설정하기보다는 setdata가 자동으로 호출되는 메서드를 만드는 것이 좋다. __init__을 사용하게 된다면 메서드는 생성자가 된다."
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "jzTf4XS4fRcZ",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 244
+        },
+        "outputId": "900f3ffe-5616-46af-a80b-71a00790bef6"
+      },
+      "source": [
+        "# 클래스의 상속\n",
+        "\n",
+        "class MoreFourCal(FourCal):\n",
+        "   pass\n",
+        "\n",
+        "a = MoreFourCal(4, 2)\n",
+        "\n",
+        "a.add()\n",
+        "a.div()\n",
+        "a.mul()\n",
+        "a.dif()\n"
+      ],
+      "execution_count": 23,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "TypeError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-23-b588bd22e602>\u001b[0m in \u001b[0;36m<module>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      3\u001b[0m    \u001b[0;32mpass\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 5\u001b[0;31m \u001b[0ma\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mMoreFourCal\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m4\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;36m2\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      6\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      7\u001b[0m \u001b[0ma\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0madd\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mTypeError\u001b[0m: object() takes no parameters"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ZMC7BrecgHAM",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}
